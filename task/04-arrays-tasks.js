@@ -598,11 +598,8 @@ function swapHeadAndTail(arr) {
 
   const headAndTailLength = Math.floor(arr.length / 2);
   const tail = arr.slice(-headAndTailLength);
-  const splice1 = Array.of(0, headAndTailLength).concat(tail);
-  const head = Array.prototype.splice.apply(arr, splice1);
-  // const head = arr.splice(0, headAndTailLength, ...tail);
-  const splice2 = Array.of(-headAndTailLength, headAndTailLength).concat(head);
-  Array.prototype.splice.apply(arr, splice2);
+  const head = arr.splice(0, headAndTailLength, ...tail);
+  arr.splice(-headAndTailLength, headAndTailLength, ...head);
 
   return arr;
 }
